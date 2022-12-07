@@ -1,3 +1,7 @@
+import Header from "../Components/Header";
+
 export default function ScreenSuccess(){
-    return <h1>Success</h1>
+    return(
+        <Header/>
+    )
 }

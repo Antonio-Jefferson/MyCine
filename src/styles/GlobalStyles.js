@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-component"
+import {createGlobalStyle} from "styled-components"
 
 const GlobalStyles = createGlobalStyle`
 
@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         border: none;
         list-style: none;
+        font-family: 'Roboto';
     }
 
     :root{

@@ -1,3 +1,7 @@
+import Header from "../Components/Header";
+
 export default function SceenSeats(){
-    return <h1>Seats</h1>
+    return (
+        <Header/>
+    )
 }

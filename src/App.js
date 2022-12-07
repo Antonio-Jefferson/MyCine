@@ -1,18 +1,27 @@
-import ScreenHome from './pages/ScreenHome';
-import ScreenSeats from './pages/ScreenSeats';
+import Header from './Components/Header'
+import GlobalStyles from "./styles/GlobalStyles"
+import styled from 'styled-components';
 import ScreenSessions from './pages/ScreenSessions';
-import ScreenSuccess from './pages/ScreenSuccess';
-import GlobalStyles from './styles/GlobalStyles'
+/*import ScreenSeats from './pages/ScreenSeats';
+import ScreenHome from './pages/ScreenHome';
+import ScreenSuccess from './pages/ScreenSuccess';*/
 export default function App() {
   return (
-    <>
+    <Conteiner>
        <GlobalStyles/>
-       <ScreenHome/>
-       <ScreenSeats/>
+       <Header/>
        <ScreenSessions/>
-       <ScreenSuccess/>
-    </>
+       {/*
+       <ScreenHome/>
+        <ScreenSeats/>
+       
+  <ScreenSuccess/>*/}
+    </Conteiner>
   
   );
 }
 
+const Conteiner = styled.div`
+    background-color: #E5E5E5;
+    height: 100vh;
+`
