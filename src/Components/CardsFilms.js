@@ -1,11 +1,13 @@
 
 import styled from "styled-components"
-
-export default function CardsFilms({img, onClick, key}) {
-   
+import { Link } from "react-router-dom"
+export default function CardsFilms({ img, key, id }) {
     return (
-        <Cards onClick={onClick} key={key} ><img src={img} /></Cards>
+        <Link key={key} to={`/sessoes/${id}`}>
+            <Cards> <img src={img} /> </Cards>
+        </Link>
     )
+
 }
 
 

@@ -2,22 +2,26 @@ import Header from './Components/Header'
 import GlobalStyles from "./styles/GlobalStyles"
 import styled from 'styled-components';
 import ScreenSessions from './pages/ScreenSessions';
-/*import ScreenSeats from './pages/ScreenSeats';
+import ScreenSeats from './pages/ScreenSeats';
 import ScreenHome from './pages/ScreenHome';
-import ScreenSuccess from './pages/ScreenSuccess';*/
+import ScreenSuccess from './pages/ScreenSuccess';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 export default function App() {
   return (
     <Conteiner>
-       <GlobalStyles/>
-       <Header/>
-       <ScreenSessions/>
-       {/*
-       <ScreenHome/>
-        <ScreenSeats/>
-       
-  <ScreenSuccess/>*/}
+      <GlobalStyles />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path='/' element={<ScreenHome />}></Route>
+          <Route path='/sessoes/:sessoesId' element={<ScreenSessions />}></Route>
+          <Route path='/assentos' element={<ScreenSeats />}></Route>
+          <Route path='/sucesso' element={<ScreenSuccess />}></Route>
+        </Routes>
+      </BrowserRouter>
     </Conteiner>
-  
+
   );
 }
 

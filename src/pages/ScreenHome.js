@@ -1,16 +1,15 @@
 
 import ListFilms from "../Components/ListFilms"
 import styled from 'styled-components'
-export default function ScreenHome(){
+export default function ScreenHome({setIdSection, idSection}){
     return (
         <Conteiner>
              <h2>Selecione o filme</h2>
-             <ListFilms/>
+             <ListFilms setIdSection={setIdSection} idSection={idSection}/>
         </Conteiner>
        
     )
 }
-
 
 const Conteiner = styled.div`
     display: flex;

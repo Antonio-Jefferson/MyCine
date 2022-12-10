@@ -1,17 +1,36 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import SessionsFilms from "../Components/SessionsFilms"
 
 export default function ScreenSessions(){
+    const [movie, setMovie] = useState({})
+    const [daysMovie, setDaysMovie] = useState([])
+    const {sessoesId} = useParams();
+   
+    useEffect(()=>{
+        const url = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${sessoesId}/showtimes`
+        const promise = axios.get(url)
+        promise.then(res =>{
+            setMovie(res.data)
+            setDaysMovie(res.data.days)
+        })
+        promise.catch((res)=>{
+            console.log(res.data)
+        
+        })
+    },[])
     return (
         <Conteiner>
             <h2>Selecione o horário</h2>
-            <SessionsFilms/>
+           {daysMovie.map((e) => <SessionsFilms weekday={e.weekday} date={e.date} showtimes={e.showtimes}/>)}
             <FooterMovie>
                 <div>
-                    <img src=""/>
+                    <img src={movie.posterURL}/>
                 </div>
                 <Hour>
-                    <p>  Enola Holmes</p>
+                    <p>{movie.title}</p>
                     <p></p>
                 </Hour>
             </FooterMovie>
