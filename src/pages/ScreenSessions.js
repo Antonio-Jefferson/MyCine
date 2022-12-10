@@ -31,7 +31,6 @@ export default function ScreenSessions(){
                 </div>
                 <Hour>
                     <p>{movie.title}</p>
-                    <p></p>
                 </Hour>
             </FooterMovie>
         </Conteiner>

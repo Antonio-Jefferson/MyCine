@@ -16,7 +16,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<ScreenHome />}></Route>
           <Route path='/sessoes/:sessoesId' element={<ScreenSessions />}></Route>
-          <Route path='/assentos' element={<ScreenSeats />}></Route>
+          <Route path='/assentos/:seatsId' element={<ScreenSeats />}></Route>
           <Route path='/sucesso' element={<ScreenSuccess />}></Route>
         </Routes>
       </BrowserRouter>
