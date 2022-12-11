@@ -25,17 +25,19 @@ export default function SceenSeats({setTicket}) {
         promisse.catch(err => console.log(err))
     }, [])
 
-    function selected(id) {
+    function selected(id, a) {
+        console.log(a)
        let arr = []
-        if(seatSelected.includes(id)){
+        if(!seatSelected.includes(id) && a){
             const newArr = seatSelected.filter((e)=> e !== id)
-            console.log(newArr)
             setSeatSelected(newArr)
-        }else{
+        }else if(!seatSelected.includes(id)){
             arr = [...seatSelected, id]
             setSeatSelected(arr);  
         }
-
+        if (a === true) {
+            alert("Esse assento não está disponível")
+        }
 
     }
 
@@ -57,9 +59,9 @@ export default function SceenSeats({setTicket}) {
         const link = 'https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many'
         const promisse = axios.post(link, obj);
         promisse.then(()=>{
-            setTicket(ticket)
             if(seatSelected.length !== 0){
                 navigate('/sucesso');
+                setTicket(ticket)
             }else{
                 alert("Por favor escolha um Assento")
             }
@@ -76,9 +78,8 @@ export default function SceenSeats({setTicket}) {
                 {Seats.map((e, id) =>
                     <Btn 
                         data-test="seat"
-                        onClick={() => selected(id + 1)}
+                        onClick={() => selected(id + 1, e.isAvailable)}
                         className={e.isAvailable ? 'indisponivel' : 'disponivel'}
-                        disabled={e.isAvailable? true:false}
                         seatSelected={seatSelected}
                         id={id + 1}
                     >

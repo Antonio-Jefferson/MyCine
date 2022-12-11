@@ -9,7 +9,7 @@ export default function ScreenSuccess({ ticket, setTicket }) {
     return (
         <Conteiner>
             <h2>PEDIDO FEITO <br /> COM SUCESSO!</h2>
-            <Corpo>
+            <Body>
                 <section data-test="movie-info">
                     <h3>Filme e sessão</h3>
                     <p>{ticket.title}</p>
@@ -24,13 +24,13 @@ export default function ScreenSuccess({ ticket, setTicket }) {
                     <p>{`Nome:${ticket.name}`}</p>
                     <p>{`CPF:${ticket.cpf}`}</p>
                 </section>
-            </Corpo>
+            </Body>
 
             <Enviar
                 data-test="go-home-btn"
                 onClick={home}
             >
-                Voltar pra Home
+                Voltar para Home
             </Enviar>
 
         </Conteiner>
@@ -48,7 +48,7 @@ const Conteiner = styled.div`
         color: var(--success);
     }
 `
-const Corpo = styled.section`   
+const Body = styled.section`   
     padding-left: 30px;
     font-family: 'Roboto';
     font-style: normal;
