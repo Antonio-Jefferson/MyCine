@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 export default function CardsFilms({ img, key, id }) {
     return (
         <Link key={key} to={`/sessoes/${id}`}>
-            <Cards> <img src={img} /> </Cards>
+            <Cards data-test="movie" > <img src={img} /> </Cards>
         </Link>
     )
 

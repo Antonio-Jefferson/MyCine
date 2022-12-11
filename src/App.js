@@ -19,7 +19,7 @@ export default function App() {
           <Route path='/' element={<ScreenHome />}></Route>
           <Route path='/sessoes/:sessoesId' element={<ScreenSessions />}></Route>
           <Route path='/assentos/:seatsId' element={<ScreenSeats setTicket={setTicket} />}></Route>
-          <Route path='/sucesso' element={<ScreenSuccess ticket={ticket} />}></Route>
+          <Route path='/sucesso' element={<ScreenSuccess ticket={ticket} setTicket={setTicket} />}></Route>
         </Routes>
       </BrowserRouter>
     </Conteiner>
@@ -28,6 +28,8 @@ export default function App() {
 }
 
 const Conteiner = styled.div`
-    background-color: #E5E5E5;
-    height: 100vh;
+    background-color:  var( --primary);
+    margin-top: 106px;
+    padding-bottom: 200px;
+    padding-top: 12px;
 `

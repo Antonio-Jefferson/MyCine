@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import { Link } from "react-router-dom"
-export default function ScreenSuccess({ticket}){
-    console.log(ticket)
-    return(
+export default function ScreenSuccess({ ticket, setTicket }) {
+    const navigate = useNavigate();
+    function home(){
+        navigate('/')
+        setTicket({})
+    }
+    return (
         <Conteiner>
-                <h2>Pedido feito <br /> com sucesso!</h2>
+            <h2>PEDIDO FEITO <br /> COM SUCESSO!</h2>
             <Corpo>
                 <section data-test="movie-info">
                     <h3>Filme e sessão</h3>
@@ -13,7 +17,7 @@ export default function ScreenSuccess({ticket}){
                 </section>
                 <section data-test="seats-info" >
                     <h3>Ingressos</h3>
-                   {ticket.ids.map((e)=> <p>Assentos {e}</p>)}
+                    {ticket.ids.map((e) => <p key={e}>Assento {e}</p>)}
                 </section>
                 <section data-test="client-info">
                     <h3>Comprador</h3>
@@ -21,10 +25,14 @@ export default function ScreenSuccess({ticket}){
                     <p>{`CPF:${ticket.cpf}`}</p>
                 </section>
             </Corpo>
-            <Link data-test="go-home-btn" to={"/"}>
-                <Enviar>Voltar pra Home</Enviar>
-            </Link>
-        
+
+            <Enviar
+                data-test="go-home-btn"
+                onClick={home}
+            >
+                Voltar pra Home
+            </Enviar>
+
         </Conteiner>
     )
 }
@@ -34,11 +42,10 @@ const Conteiner = styled.div`
         margin: 45px 0px;
         font-family: 'Roboto';
         text-align: center;
-        font-style: normal;
         font-weight: 400;
         font-size: 24px;
         line-height: 28px;
-        color: var(--selected);
+        color: var(--success);
     }
 `
 const Corpo = styled.section`   
@@ -50,17 +57,12 @@ const Corpo = styled.section`
     letter-spacing: 0.04em;
     font-size: 22px; 
     font-weight: 400;
-    color: #293845;
     h3 {
         font-size: 24px;
         font-weight: 700;
-        color: #293845;
+        color: var(--TextH3);
         margin-bottom: 10px;
         margin-top: 50px;
-        color: #293845;
-    }
-    .p {
-        margin-top: 0px;
     }
 `
 

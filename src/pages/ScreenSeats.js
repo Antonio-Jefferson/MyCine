@@ -13,8 +13,6 @@ export default function SceenSeats({setTicket}) {
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
     const navigate = useNavigate();
-    const [seatIsVailable, setSeatIsVailable] = useState([])
-    console.log(seatIsVailable)
 
     useEffect(() => {
         const url = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${seatsId}/seats`
@@ -23,15 +21,11 @@ export default function SceenSeats({setTicket}) {
             setSeats(e.data.seats)
             setMovie(e.data.movie)
             setDay(e.data.day)
-            setSeatIsVailable(e.data.seats.isAvailable)
         })
         promisse.catch(err => console.log(err))
     }, [])
 
     function selected(id) {
-        if(id.disabled){
-            alert("Esse assento não está disponível")
-        }
        let arr = []
         if(seatSelected.includes(id)){
             const newArr = seatSelected.filter((e)=> e !== id)
@@ -64,7 +58,11 @@ export default function SceenSeats({setTicket}) {
         const promisse = axios.post(link, obj);
         promisse.then(()=>{
             setTicket(ticket)
-            navigate('/sucesso');
+            if(seatSelected.length !== 0){
+                navigate('/sucesso');
+            }else{
+                alert("Por favor escolha um Assento")
+            }
         })
         promisse.catch((err)=>{
             console.log(err)
@@ -155,7 +153,7 @@ const Conteiner = styled.div`
         font-weight: 400;
         font-size: 24px;
         line-height: 28px;
-        color: #293845;
+        color: var(--White);
     }
 `
 

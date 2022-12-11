@@ -16,7 +16,7 @@ export default function Footer({movie, day}) {
 const FooterMovie = styled.footer`
     height: 117px;
     width: 100%;
-    background: #DFE6ED;
+    background: var(--black);
     border: 1px solid #9EADBA;
     position: fixed;
     right: 0px;
@@ -45,6 +45,5 @@ const FooterMovie = styled.footer`
 
 const Hour = styled.span`
     width: 100%;
-    background: #DFE6ED;
 
 `

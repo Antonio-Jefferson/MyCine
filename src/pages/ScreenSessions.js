@@ -24,7 +24,7 @@ export default function ScreenSessions(){
     return (
         <Conteiner>
             <h2>Selecione o horário</h2>
-           {daysMovie.map((e) => <SessionsFilms data-test="movie-day" weekday={e.weekday} date={e.date} showtimes={e.showtimes}/>)}
+           {daysMovie.map((e, id) => <SessionsFilms key={id}  weekday={e.weekday} date={e.date} showtimes={e.showtimes}/>)}
             <FooterMovie data-test="footer">
                 <div>
                     <img src={movie.posterURL}/>
@@ -49,19 +49,19 @@ const Conteiner = styled.div`
         font-weight: 400;
         font-size: 24px;
         line-height: 28px;
-        color: #293845;
+        color: var(--White);
     }
     h3{
         font-family: 'Roboto';
         font-weight: 400;
         font-size: 20px;
-        color: #293845;
+        color: var(--White);
     }
 `
 const FooterMovie = styled.footer`
     height: 117px;
     width: 100%;
-    background: #DFE6ED;
+    background: var(--black);
     border: 1px solid #9EADBA;
     position: fixed;
     right: 0px;
@@ -90,6 +90,4 @@ const FooterMovie = styled.footer`
 
 const Hour = styled.span`
     width: 100%;
-    background: #DFE6ED;
-
 `

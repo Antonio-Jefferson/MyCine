@@ -9,19 +9,16 @@ const GlobalStyles = createGlobalStyle`
         border: none;
         list-style: none;
         font-family: 'Roboto';
+        color: #fff;
     }
 
     :root{
-        --primary: #E5E5E5;
-        --seatsBtns: #C3CFD9;
-        --borderSeatsBtns: #808F9D;
+        --black: #000;
+        --White: #fff;
+        --primary:#292929;
+        --TextH3:#E8833A; 
         --colorBtns: #E8833A;
-        --selected: #1AAE9E;
-        --borderSelected: #0E7D71;
-        --available: #C3CFD9;
-        --borderAvailable: #7B8B99;
-        --unavailable: #FBE192;
-        --borderUnavaible: #F7C52B;
+        --success: #2929;
     }
 `
 
