@@ -227,6 +227,7 @@ const DadosUser = styled.form`
             border: 1px solid #D5D5D5;
             border-radius: 3px;
             padding: 0px 12px;
+            color: var(--black);
         }
         button{
             width: 225px;
