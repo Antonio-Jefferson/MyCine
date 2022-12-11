@@ -8,7 +8,7 @@ export default function SessionsFilms({ weekday, date, showtimes }) {
                 {showtimes.map((evet) =>
                     <Link
                         to={`/assentos/${evet.id}`}>
-                        <button>
+                        <button data-test="showtime">
                             {evet.name}
                         </button>
                     </Link>)}

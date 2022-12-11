@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../Components/Footer";
-export default function SceenSeats() {
+export default function SceenSeats({setTicket}) {
     const { seatsId } = useParams();
     const [Seats, setSeats] = useState([]);
     const [Movie, setMovie] = useState({});
@@ -13,6 +13,8 @@ export default function SceenSeats() {
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
     const navigate = useNavigate();
+    const [seatIsVailable, setSeatIsVailable] = useState([])
+    console.log(seatIsVailable)
 
     useEffect(() => {
         const url = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${seatsId}/seats`
@@ -21,11 +23,15 @@ export default function SceenSeats() {
             setSeats(e.data.seats)
             setMovie(e.data.movie)
             setDay(e.data.day)
+            setSeatIsVailable(e.data.seats.isAvailable)
         })
-        promisse.catch(res => console.log(res))
+        promisse.catch(err => console.log(err))
     }, [])
 
     function selected(id) {
+        if(id.disabled){
+            alert("Esse assento não está disponível")
+        }
        let arr = []
         if(seatSelected.includes(id)){
             const newArr = seatSelected.filter((e)=> e !== id)
@@ -39,16 +45,25 @@ export default function SceenSeats() {
 
     }
 
-    function sed(event) {
+    function send(event) {
         event.preventDefault();
         const obj = {
             ids:seatSelected,
             name: name,
             cpf: cpf
         }
+        const ticket = {
+            ids:seatSelected,
+            name: name,
+            cpf: cpf,
+            day: Day.date,
+            title: Movie.title,
+            Wekday: Day.weekday
+        }
         const link = 'https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many'
         const promisse = axios.post(link, obj);
         promisse.then(()=>{
+            setTicket(ticket)
             navigate('/sucesso');
         })
         promisse.catch((err)=>{
@@ -63,10 +78,11 @@ export default function SceenSeats() {
                 {Seats.map((e, id) =>
                     <Btn 
                         data-test="seat"
-                        onClick={() => selected(id)}
+                        onClick={() => selected(id + 1)}
                         className={e.isAvailable ? 'indisponivel' : 'disponivel'}
+                        disabled={e.isAvailable? true:false}
                         seatSelected={seatSelected}
-                        id={id}
+                        id={id + 1}
                     >
                         {e.name}
                     </Btn >
@@ -86,10 +102,11 @@ export default function SceenSeats() {
                     Indisponível
                 </div>
             </ Options>
-            <DadosUser onSubmit={(e) => sed(e)}>
+            <DadosUser onSubmit={(e) => send(e)}>
 
                 <label htmlFor="nome">Nome do comprador:</label>
                 <input
+                    data-test="client-name"
                     id="nome"
                     type='text'
                     placeholder="Digite seu nome..."
@@ -102,6 +119,7 @@ export default function SceenSeats() {
 
                 <label htmlFor="number">CPF do comprador:</label>
                 <input
+                    data-test="client-cpf"
                     id="number"
                     type='namber'
                     placeholder="Digite seu CPF..."
@@ -112,7 +130,10 @@ export default function SceenSeats() {
                 />
 
                 <button
-                    type="submit">Reservar assento(s)
+                    type="submit"
+                    data-test="book-seat-btn"
+                >
+                    Reservar assento(s)
                 </button>
             </DadosUser>
             <Footer movie={Movie} day={Day} />

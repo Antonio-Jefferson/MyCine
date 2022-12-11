@@ -24,8 +24,8 @@ export default function ScreenSessions(){
     return (
         <Conteiner>
             <h2>Selecione o horário</h2>
-           {daysMovie.map((e) => <SessionsFilms weekday={e.weekday} date={e.date} showtimes={e.showtimes}/>)}
-            <FooterMovie>
+           {daysMovie.map((e) => <SessionsFilms data-test="movie-day" weekday={e.weekday} date={e.date} showtimes={e.showtimes}/>)}
+            <FooterMovie data-test="footer">
                 <div>
                     <img src={movie.posterURL}/>
                 </div>

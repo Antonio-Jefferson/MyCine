@@ -1,7 +1,7 @@
 import styled from "styled-components"
 export default function Footer({movie, day}) {
     return (
-        <FooterMovie>
+        <FooterMovie data-test="footer">
             <div>
                 <img src={movie.posterURL} />
             </div>
