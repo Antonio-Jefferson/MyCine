@@ -7,8 +7,9 @@ export default function SessionsFilms({ weekday, date, showtimes, key }) {
             <Buttons >
                 {showtimes.map((evet, id) =>
                     <Link
+                        key={id}
                         to={`/assentos/${evet.id}`}>
-                        <button key={id} data-test="showtime">
+                        <button data-test="showtime">
                             {evet.name}
                         </button>
                     </Link>)}
@@ -21,6 +22,11 @@ export default function SessionsFilms({ weekday, date, showtimes, key }) {
 const Buttons = styled.div`
     display: flex;
     gap: 10px;
+    h3{
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 20px;
+    }
     button{
         width: 82px;
         height: 43px;

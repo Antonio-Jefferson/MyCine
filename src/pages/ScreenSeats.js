@@ -26,7 +26,6 @@ export default function SceenSeats({setTicket}) {
     }, [])
 
     function selected(id, a) {
-        console.log(a)
        let arr = []
         if(!seatSelected.includes(id) && a){
             const newArr = seatSelected.filter((e)=> e !== id)
@@ -189,6 +188,9 @@ const Options = styled.div`
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 13px;
         }
         .circle-selecionando{  
             width: 25px;
@@ -221,6 +223,12 @@ const DadosUser = styled.form`
         display: flex;
         flex-direction: column;
         margin-top: 42px;
+        label{
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 18px;
+            margin-top: 7px;
+        }
         input{
             width: 327px;
             height: 51px;
@@ -238,6 +246,9 @@ const DadosUser = styled.form`
             background: #E8833A;
             border-radius: 3px;
             color: #fff;
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 13px;
         }
     
     

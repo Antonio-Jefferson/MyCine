@@ -42,7 +42,7 @@ const Conteiner = styled.div`
         margin: 45px 0px;
         font-family: 'Roboto';
         text-align: center;
-        font-weight: 400;
+        font-weight: 700;
         font-size: 24px;
         line-height: 28px;
         color: var(--success);

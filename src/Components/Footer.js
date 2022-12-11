@@ -16,7 +16,7 @@ export default function Footer({movie, day}) {
 const FooterMovie = styled.footer`
     height: 117px;
     width: 100%;
-    background: var(--black);
+    background: var(--footer);
     border: 1px solid #9EADBA;
     position: fixed;
     right: 0px;
@@ -25,7 +25,13 @@ const FooterMovie = styled.footer`
     display: flex;
     align-items: center;
     gap: 22px;
-    padding: 0px 10px ;
+    padding: 0px 10px;
+    p{
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 1.3rem;
+    }
+    
     div{
         width: 64px;
         height: 89px;

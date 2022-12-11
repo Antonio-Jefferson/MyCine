@@ -21,7 +21,7 @@ export default function ListFilms(){
     }
     return(
         <Ul> 
-            {urlImg.map((f)=> <CardsFilms  id={f.id} key={f.id}  img={f.posterURL}/> )}
+            {urlImg.map((f, id)=> <CardsFilms id={f.id} key={id}  img={f.posterURL}/> )}
         </Ul>
     )
 }

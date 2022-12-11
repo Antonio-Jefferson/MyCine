@@ -9,16 +9,18 @@ const GlobalStyles = createGlobalStyle`
         border: none;
         list-style: none;
         font-family: 'Roboto';
-        color: #fff;
+        color: #293845;
     }
 
     :root{
-        --black: #000;
-        --White: #fff;
-        --primary:#292929;
-        --TextH3:#E8833A; 
+        --black: #c3cfd9;
+        --footer: #dfe6ed;
+
+        --White: ##293845;
+        --primary:##e5e5e5;
+        --TextH3:#293845; 
         --colorBtns: #E8833A;
-        --success: #2929;
+        --success: #247a6b;
     }
 `
 
