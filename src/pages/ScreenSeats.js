@@ -13,6 +13,7 @@ export default function SceenSeats({setTicket}) {
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
     const navigate = useNavigate();
+    const [idSeat, setIdSeat] = useState([]);
     const cpfMask = value => {
         return value
           // substitui qualquer caracter que nao seja numero por nada
@@ -36,19 +37,28 @@ export default function SceenSeats({setTicket}) {
         promisse.catch(err => console.log(err))
     }, [])
 
-    function selected(id, a) {
+    // Não gostei do código, muito repetição, não consigo separar e fazer funções pra cada fucionalidade
+    function selected(id, i, isA) {
        let arr = []
-        if(!seatSelected.includes(id)){
-            arr = [...seatSelected, id]
+       let idArr = []
+        if(!seatSelected.includes(i)){
+            arr = [...seatSelected, i];
+            idArr = [...idSeat, id];
+            setIdSeat(idArr);
             setSeatSelected(arr);  
         }else{
-            const newArr = seatSelected.filter((e)=> e !== id)
+            const newID = idSeat.filter((e)=> e !== id)
+            const newArr = seatSelected.filter((e)=> e !== i)
             setSeatSelected(newArr)
+            setIdSeat(newID);
+
         }
-        if (a === true) {
+        if (isA === true) {
             alert("Esse assento não está disponível")
-            const newArr = seatSelected.filter((e)=> e !== id)
+            const newID = idSeat.filter((e)=> e !== id)
+            const newArr = seatSelected.filter((e)=> e !== i)
             setSeatSelected(newArr)
+            setIdSeat(newID);
         }
 
     }
@@ -56,12 +66,12 @@ export default function SceenSeats({setTicket}) {
     function send(event) {
         event.preventDefault();
         const obj = {
-            ids:seatSelected,
+            ids:idSeat,
             name: name,
             cpf: cpf
         }
         const ticket = {
-            ids:seatSelected,
+            ids:idSeat,
             name: name,
             cpf: cpf,
             day: Day.date,
@@ -87,13 +97,13 @@ export default function SceenSeats({setTicket}) {
         <Conteiner>
             <h2>Selecione o(s) assento(s)</h2>
             <Botoes>
-                {Seats.map((e, id) =>
+                {Seats.map((e) =>
                     <Btn 
                         data-test="seat"
-                        onClick={() => selected(id + 1, e.isAvailable)}
+                        onClick={() => selected(e.name, e.id, e.isAvailable)}
                         className={e.isAvailable ? 'indisponivel' : 'disponivel'}
                         seatSelected={seatSelected}
-                        id={id + 1}
+                        id={e.id}
                     >
                         {e.name}
                     </Btn >
