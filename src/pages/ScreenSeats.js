@@ -13,6 +13,17 @@ export default function SceenSeats({setTicket}) {
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
     const navigate = useNavigate();
+    const cpfMask = value => {
+        return value
+          // substitui qualquer caracter que nao seja numero por nada
+          .replace(/\D/g, '')
+          // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
+          .replace(/(\d{3})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+          // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
+          .replace(/(-\d{2})\d+?$/, '$1');
+      };
 
     useEffect(() => {
         const url = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${seatsId}/seats`
@@ -27,15 +38,17 @@ export default function SceenSeats({setTicket}) {
 
     function selected(id, a) {
        let arr = []
-        if(!seatSelected.includes(id) && a){
-            const newArr = seatSelected.filter((e)=> e !== id)
-            setSeatSelected(newArr)
-        }else if(!seatSelected.includes(id)){
+        if(!seatSelected.includes(id)){
             arr = [...seatSelected, id]
             setSeatSelected(arr);  
+        }else{
+            const newArr = seatSelected.filter((e)=> e !== id)
+            setSeatSelected(newArr)
         }
         if (a === true) {
             alert("Esse assento não está disponível")
+            const newArr = seatSelected.filter((e)=> e !== id)
+            setSeatSelected(newArr)
         }
 
     }
@@ -123,7 +136,7 @@ export default function SceenSeats({setTicket}) {
                     placeholder="Digite seu CPF..."
                     required
                     minLength={11}
-                    onChange={(e)=> setCpf(e.target.value)}
+                    onChange={(e)=> setCpf(cpfMask(e.target.value))}
                     value={cpf}
                 />
 
@@ -236,7 +249,7 @@ const DadosUser = styled.form`
             border: 1px solid #D5D5D5;
             border-radius: 3px;
             padding: 0px 12px;
-            color: var(--black);
+            color: #000;
         }
         button{
             width: 225px;

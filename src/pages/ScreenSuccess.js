@@ -21,8 +21,8 @@ export default function ScreenSuccess({ ticket, setTicket }) {
                 </section>
                 <section data-test="client-info">
                     <h3>Comprador</h3>
-                    <p>{`Nome:${ticket.name}`}</p>
-                    <p>{`CPF:${ticket.cpf}`}</p>
+                    <p>{`Nome: ${ticket.name}`}</p>
+                    <p>{`CPF: ${ticket.cpf}`}</p>
                 </section>
             </Body>
 
