@@ -66,7 +66,7 @@ export default function SceenSeats({setTicket}) {
     function send(event) {
         event.preventDefault();
         const obj = {
-            ids:idSeat,
+            ids:seatSelected,
             name: name,
             cpf: cpf
         }
