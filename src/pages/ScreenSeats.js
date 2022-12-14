@@ -53,7 +53,7 @@ export default function SceenSeats({setTicket}) {
             setIdSeat(newID);
 
         }
-        if (isA === true) {
+        if (isA === false) {
             alert("Esse assento não está disponível")
             const newID = idSeat.filter((e)=> e !== id)
             const newArr = seatSelected.filter((e)=> e !== i)
