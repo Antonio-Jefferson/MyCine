@@ -101,7 +101,7 @@ export default function SceenSeats({setTicket}) {
                     <Btn 
                         data-test="seat"
                         onClick={() => selected(e.name, e.id, e.isAvailable)}
-                        className={e.isAvailable ? 'indisponivel' : 'disponivel'}
+                        className={!e.isAvailable ? 'indisponivel' : 'disponivel'}
                         seatSelected={seatSelected}
                         id={e.id}
                     >
