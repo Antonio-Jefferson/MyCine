@@ -20,4 +20,4 @@ Requisitos e Funcionalidades
     - Instale as dependências com npm install
     - Inicie o servidor de desenvolvimento com npm start
     - Abra o aplicativo no navegador em http://localhost:3000
-    - Ou cesse o link do deploy: 
+    - Ou cesse o link do deploy: mycine-mauve.vercel.app
